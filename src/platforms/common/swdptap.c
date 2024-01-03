@@ -69,9 +69,9 @@ static void swdptap_turnaround(const swdio_status_t dir)
 		SWDIO_MODE_FLOAT();
 	} else {
 		gpio_clear(SWCLK_PORT, SWCLK_PIN);
-		for (volatile uint32_t counter = target_clk_divider + 1; counter > 0; --counter)
-			continue;
 	}
+	for (volatile uint32_t counter = target_clk_divider + 1; counter > 0; --counter)
+		continue;
 
 	gpio_set(SWCLK_PORT, SWCLK_PIN);
 	for (volatile uint32_t counter = target_clk_divider + 1; counter > 0; --counter)
